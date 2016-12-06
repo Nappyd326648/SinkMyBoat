@@ -46,6 +46,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "643893978541-pgcs9gm123fvie2paocd77evh6le50t6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.eugenestewart.sinkmyboat",
+            "certificate_hash": "3A8796E2747BA375D216891CE40A5D77F89F3A7D"
+          }
+        },
+        {
           "client_id": "643893978541-i0033rnnb7dt4ou6cmrh7g6n03a2ptlm.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -60,8 +68,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "643893978541-i0033rnnb7dt4ou6cmrh7g6n03a2ptlm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
