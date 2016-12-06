@@ -13,7 +13,7 @@ public class Ships {
     int size;
     LinkedList<Point> coordinates = new LinkedList<>();
     boolean hit;
-    boolean sunk
+    boolean sunk;
 
     public LinkedList<Point> getCoordinates() {
         return coordinates;

@@ -10,11 +10,20 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 /**
  * Created by in0418gq on 12/6/16.
@@ -22,7 +31,6 @@ import com.google.android.gms.common.api.GoogleApiClient;
 
 public class WelcomeFt extends FragmentActivity implements GoogleApiClient.OnConnectionFailedListener,View.OnClickListener{
 
-    public class SignInActivity extends FragmentActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
 
         private static final int REQUEST_CODE_SIGN_IN = 12345;
         protected static final String FIREBASE_USER_ID_PREF_KEY = "Firebase user id";
@@ -36,7 +44,7 @@ public class WelcomeFt extends FragmentActivity implements GoogleApiClient.OnCon
 
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_sign_in);
+            setContentView(R.layout.ft_welcome);
 
             //Two steps. User signs in with Google, and then exchange Google token for Firebase token
             mFirebaseAuth = FirebaseAuth.getInstance();
@@ -59,7 +67,7 @@ public class WelcomeFt extends FragmentActivity implements GoogleApiClient.OnCon
                 public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                     Log.d(TAG, "onAuthStateChanged for user: " + firebaseAuth.getCurrentUser());
                     FirebaseUser user = firebaseAuth.getCurrentUser();
-                    SignInActivity.this.authStateChanged(user);
+                    WelcomeFt.this.authStateChanged(user);
                 }
             };
 
@@ -139,12 +147,11 @@ public class WelcomeFt extends FragmentActivity implements GoogleApiClient.OnCon
         }
 
 
-
         //Add and remove listeners for auth state as this activity stops and starts
         //The mAuthStateChangedListener is what will permit the user to continue with the app once authenticated.
 
         @Override
-        public void onStart(){
+        public void onStart() {
             super.onStart();
             mFirebaseAuth.addAuthStateListener(mAuthStateListener);
         }
@@ -167,18 +174,17 @@ public class WelcomeFt extends FragmentActivity implements GoogleApiClient.OnCon
                 Log.d(TAG, "user has signed in");
 
                 //Save the user id in shared prefs
-                Log.d(TAG, "The user id is = " + user.getUid() + " " +user.toString());
+                Log.d(TAG, "The user id is = " + user.getUid() + " " + user.toString());
 
                 SharedPreferences.Editor prefEditor = getSharedPreferences(USERS_PREFS, MODE_PRIVATE).edit();
                 prefEditor.putString(FIREBASE_USER_ID_PREF_KEY, user.getUid());
                 prefEditor.apply();
 
-                //And then boot up the app by starting the BeeSightingsReportActivity
-                Intent startBeeSightings = new Intent(this, BeeSightingReportActivity.class);
-                startActivity(startBeeSightings);
+                //And then boot up the app by starting the
+                Intent startTable = new Intent(this, TableFt.class);
+                startActivity(startTable);
             }
         }
-
 
 
         @Override
