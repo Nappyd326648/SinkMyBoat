@@ -16,7 +16,7 @@ public class WelcomeFt extends FragmentActivity implements GoogleApiClient.OnCon
 
     private static final int REQUEST_CODE_SIGN_IN = 12345;
     protected static final String FIREBASE_USER_ID_PREF_KEY = "firebase user id";
-    protected static final String USE
+    protected static final String USEr
 
     @Override
     public void onClick(View view) {
