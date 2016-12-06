@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "643893978541",
+    "firebase_url": "https://movies-5c84b.firebaseio.com",
+    "project_id": "movies-5c84b",
+    "storage_bucket": "movies-5c84b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:643893978541:android:14a7a3e804e39045",
+        "android_client_info": {
+          "package_name": "com.example.in0418gq.moviesreviewsfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "643893978541-i0033rnnb7dt4ou6cmrh7g6n03a2ptlm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiLWEgtA8OGBzphwjd9ypH-R8SNtJE2dA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:643893978541:android:eab9186ec6517096",
+        "android_client_info": {
+          "package_name": "com.eugenestewart.sinkmyboat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "643893978541-i0033rnnb7dt4ou6cmrh7g6n03a2ptlm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiLWEgtA8OGBzphwjd9ypH-R8SNtJE2dA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
