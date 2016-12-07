@@ -26,5 +26,7 @@ public class FireBase {
         db = fdb.getReference();
     }
 
-    public void getPlayers()
+    public void getPlayers(){
+
+    }
 }
