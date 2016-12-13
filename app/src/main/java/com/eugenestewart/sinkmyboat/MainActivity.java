@@ -40,13 +40,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        System.out.println(screenPixelsX);
-        System.out.println(screenPixelsY);
-        System.out.println(aspect);
-        System.out.println(maxX);
-        System.out.println(maxY);
-
-
 
     }
 }
