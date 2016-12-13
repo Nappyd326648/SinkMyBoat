@@ -8,7 +8,8 @@ import android.content.Intent;
 
 public class TableFt {
 
-
-    Intent startMain = new Intent(this, MainActivity.class);
-    startActivity(startMain);
+//    FireBase
+//
+//    Intent startMain = new Intent(this, MainActivity.class);
+//    startActivity(startMain);startMain
 }
