@@ -7,6 +7,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.Switch;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +21,10 @@ public class MainActivity extends AppCompatActivity {
     public int maxX;
     public int maxY;
 
+    public String  gameState = "SETSTAGE";
+
+    public int ShipCoornates[][];
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,24 +34,60 @@ public class MainActivity extends AppCompatActivity {
 
         final  Graphicsft graphicsft = new Graphicsft(this);
 
-
         graphicsft.setAllImages(R.drawable.water);
         mFrame.addView(graphicsft);
-
-        graphicsft.setOnTouchListener(new View.OnTouchListener(){
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent){
-                if(motionEvent.getAction()==motionEvent.ACTION_DOWN){
-                    Square whichSquare = graphicsft.whichSquareTapped(motionEvent.getX(),motionEvent.getY());
-
-                    if (whichSquare!= null){
-                        graphicsft.setImage(whichSquare.x,whichSquare.y,R.drawable.target);
-                        graphicsft.invalidate();
-                    }
-                }
-                return false;
+        for (int x = 0; x >= 10; x++ ){
+            for (int y = 0; y >= 10; y++){
+                ShipCoornates[x][y]=0;
             }
-        });
+        }
+
+        switch(gameState){
+            case "SETSTAGE": {
+
+
+                 int counter= 0;
+                graphicsft.setOnTouchListener(new View.OnTouchListener(){
+                    @Override
+                    public boolean onTouch(View view, MotionEvent motionEvent){
+                        if(motionEvent.getAction()==motionEvent.ACTION_DOWN){
+                            Square whichSquare = graphicsft.whichSquareTapped(motionEvent.getX(),motionEvent.getY());
+
+                            if (whichSquare!= null){
+
+                                graphicsft.setImage(whichSquare.x,whichSquare.y,R.drawable.boat);
+                              //  ShipCoornates[whichSquare.x][whichSquare.y]=1;
+                                graphicsft.invalidate();
+                            }
+                        }
+                        return false;
+                    }
+                });
+            }
+            case "ATTACKSTAGE":{
+                graphicsft.setOnTouchListener(new View.OnTouchListener(){
+                    @Override
+                    public boolean onTouch(View view, MotionEvent motionEvent){
+                        if(motionEvent.getAction()==motionEvent.ACTION_DOWN){
+                            Square whichSquare = graphicsft.whichSquareTapped(motionEvent.getX(),motionEvent.getY());
+
+                            if (whichSquare!= null){
+                                graphicsft.setImage(whichSquare.x,whichSquare.y,R.drawable.target);
+                                graphicsft.invalidate();
+                            }
+                        }
+                        return false;
+                    }
+                });
+
+            }
+            case "RESULTSTAGE":{
+                if ()
+            }
+        }
+
+
+
 
 
 

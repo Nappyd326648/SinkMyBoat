@@ -19,8 +19,8 @@ public class Graphicsft extends View {
     int height = 800 ;
     int width = 800;
 
-    int numberofXsquares = 11;
-    int numberofYsquares = 11;
+    int numberofXsquares = 10;
+    int numberofYsquares = 10;
 
     float squareWidth = width/numberofXsquares;
     float squareHeight = height/numberofYsquares;
