@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.Switch;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     public String  gameState = "SETSTAGE";
 
-    public int ShipCoornates[][];
+    public int ShipCoornates[][]=new int [10][10];
 
 
     @Override
@@ -32,65 +33,99 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mFrame = (FrameLayout) findViewById(R.id.activity_main);
 
-        final  Graphicsft graphicsft = new Graphicsft(this);
+        final Graphicsft graphicsft = new Graphicsft(this);
 
         graphicsft.setAllImages(R.drawable.water);
         mFrame.addView(graphicsft);
-        for (int x = 0; x >= 10; x++ ){
-            for (int y = 0; y >= 10; y++){
-                ShipCoornates[x][y]=0;
+        for (int x = 0; x >= 10; x++) {
+            for (int y = 0; y >= 10; y++) {
+                ShipCoornates[x][y] = 0;
             }
         }
 
-        switch(gameState){
-            case "SETSTAGE": {
+        switch (gameState) {
+            case "SETSTAGE":
 
+                int counter = 0;
+                switch (counter) {
+                    case 0:
+                        Toast.makeText(this, "touch five squares", Toast.LENGTH_LONG);
+                        graphicsft.setOnTouchListener(new View.OnTouchListener() {
+                            @Override
+                            public boolean onTouch(View view, MotionEvent motionEvent) {
+                                if (motionEvent.getAction() == motionEvent.ACTION_DOWN) {
+                                    Square whichSquare = graphicsft.whichSquareTapped(motionEvent.getX(), motionEvent.getY());
 
-                 int counter= 0;
-                graphicsft.setOnTouchListener(new View.OnTouchListener(){
-                    @Override
-                    public boolean onTouch(View view, MotionEvent motionEvent){
-                        if(motionEvent.getAction()==motionEvent.ACTION_DOWN){
-                            Square whichSquare = graphicsft.whichSquareTapped(motionEvent.getX(),motionEvent.getY());
+                                    if (whichSquare != null) {
 
-                            if (whichSquare!= null){
-
-                                graphicsft.setImage(whichSquare.x,whichSquare.y,R.drawable.boat);
-                              //  ShipCoornates[whichSquare.x][whichSquare.y]=1;
-                                graphicsft.invalidate();
+                                        graphicsft.setImage(whichSquare.x, whichSquare.y, R.drawable.boat);
+                                        ShipCoornates[whichSquare.x][whichSquare.y] = 1;
+                                        System.out.println(whichSquare.x);
+                                        System.out.println(whichSquare.y);
+                                        System.out.println(ShipCoornates[whichSquare.x][whichSquare.y]);
+                                        graphicsft.invalidate();
+                                    }
+                                }
+                                return false;
                             }
-                        }
-                        return false;
-                    }
-                });
-            }
-            case "ATTACKSTAGE":{
-                graphicsft.setOnTouchListener(new View.OnTouchListener(){
-                    @Override
-                    public boolean onTouch(View view, MotionEvent motionEvent){
-                        if(motionEvent.getAction()==motionEvent.ACTION_DOWN){
-                            Square whichSquare = graphicsft.whichSquareTapped(motionEvent.getX(),motionEvent.getY());
+                        });
 
-                            if (whichSquare!= null){
-                                graphicsft.setImage(whichSquare.x,whichSquare.y,R.drawable.target);
-                                graphicsft.invalidate();
-                            }
-                        }
-                        return false;
-                    }
-                });
+                        break;
+                    case 1:
+                        break;
 
-            }
-            case "RESULTSTAGE":{
-                if ()
-            }
+                    default:
+                        break;
+
+
+                }
+//                graphicsft.setOnTouchListener(new View.OnTouchListener() {
+//                    @Override
+//                    public boolean onTouch(View view, MotionEvent motionEvent) {
+//                        if (motionEvent.getAction() == motionEvent.ACTION_DOWN) {
+//                            Square whichSquare = graphicsft.whichSquareTapped(motionEvent.getX(), motionEvent.getY());
+//
+//                            if (whichSquare != null) {
+//
+//                                graphicsft.setImage(whichSquare.x, whichSquare.y, R.drawable.boat);
+//                                //  ShipCoornates[whichSquare.x][whichSquare.y]=1;
+//                                graphicsft.invalidate();
+//                            }
+//                        }
+//                        return false;
+//                    }
+//                });
+//                break;
+
+//            case "ATTACKSTAGE":
+//                graphicsft.setOnTouchListener(new View.OnTouchListener() {
+//                    @Override
+//                    public boolean onTouch(View view, MotionEvent motionEvent) {
+//                        if (motionEvent.getAction() == motionEvent.ACTION_DOWN) {
+//                            Square whichSquare = graphicsft.whichSquareTapped(motionEvent.getX(), motionEvent.getY());
+//
+//                            if (whichSquare != null) {
+//                                System.out.println(whichSquare.x);
+//                                System.out.println(whichSquare.y);
+//                                graphicsft.setImage(whichSquare.x, whichSquare.y, R.drawable.target);
+//                                graphicsft.invalidate();
+//                            }
+//                        }
+//                        return false;
+//                    }
+//                });
+//                break;
+
+
+            case "RESULTSTAGE":
+
+                break;
+            default:
+                int x = 0;
+                break;
+
+
         }
-
-
-
-
-
-
     }
     @Override
     public boolean onTouchEvent(MotionEvent event){
