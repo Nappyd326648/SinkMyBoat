@@ -16,11 +16,11 @@ import android.view.View;
 public class Graphicsft extends View {
 
     final static String TAG = "Graphicsft";
-    int height = 800 ;
-    int width = 800;
+    int height = 1400 ;
+    int width = 1300;
 
-    int numberofXsquares = 10;
-    int numberofYsquares = 10;
+    int numberofXsquares = 9;
+    int numberofYsquares = 9;
 
     float squareWidth = width/numberofXsquares;
     float squareHeight = height/numberofYsquares;
@@ -33,8 +33,7 @@ public class Graphicsft extends View {
         super(context);
         imageResources = new int[numberofXsquares][numberofYsquares];
         linePaint = new Paint();
-        linePaint.setColor(Color.BLUE
-        );
+        linePaint.setColor(Color.BLUE);
     }
 
     public  void  setImage(int x,int y,int resource){

@@ -40,7 +40,7 @@ public class WelcomeFt extends FragmentActivity implements GoogleApiClient.OnCon
         private FirebaseAuth.AuthStateListener mAuthStateListener;
 
         private static final String TAG = "SIGN IN ACTIVITY";
-
+        protected static String username=
 
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
